@@ -18,7 +18,7 @@ class courseController extends Controller {
         const newCourse = new Course( { 
             tags : req.body.data.tags  , 
             price : req.body.data.price , 
-            file : '/uploads/images/Thu Apr 25 2019 02:05:46 GMT+0430 (Iran Daylight Time)_Screenshot from 2019-04-10 13-19-30.png' ,
+            file : req.body.data.file ,
             type : req.body.data.type  ,
             body : req.body.data.body , 
             title : req.body.data.title, 
@@ -27,7 +27,7 @@ class courseController extends Controller {
             categories : req.body.data.categories  
         
         } ) ; 
-        const course = await newCourse.save() ;       
+        const savedCourse = await newCourse.save() ;       
         if (course) return res.json({  status : true   }) ;
         return res.json({  status: false } ) ;     
     }

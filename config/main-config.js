@@ -7,7 +7,7 @@ module.exports = {
   debug: true,
   SecrtPramaterCookieparser: 'my_secret_key'
   , 
-  mongourl: 'mongodb://localhost:27017/Ecommerce' , 
+  mongourl: 'mongodb://localhost:27017/MERN-APP' , 
   jwt : { 
     secret_key : "cnacnaclkmscimc8646c@#@#$@#$@Rfkln_klca"
   }

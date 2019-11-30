@@ -1,7 +1,7 @@
 const Controller = require('./../Controller');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-class HomeController extends Controller {
+class AuthController extends Controller {
 
     async login(req, res, next) {
 
@@ -19,16 +19,13 @@ class HomeController extends Controller {
                     const token = jwt.sign({ id: user.id }, config.jwt.secret_key, {
                         expiresIn: 60 * 60 * 1
                     });
-
                     return res.json({
                         data: {
                             token
                         },
                         status: 'success'
                     });
-
                 })
-
             })(req, res);
 
 
@@ -86,4 +83,4 @@ class HomeController extends Controller {
 
 
 
-module.exports = new HomeController();
+module.exports = new AuthController();

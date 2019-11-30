@@ -119,13 +119,13 @@ passport.use('my-login-strategy', new LocalStrategy(
 
             if (!User.schema.methods.checkPass(password, user.password) || !user) {
                 // console.log('pass is wrong');
-                return done(null, false, req.flash('message', "ایمیل یا پسورد اشتباه است"));
+                return done(null, false, "wrong email or pass ");
             }
-            return done(null, user, req.flash('success_message', 'شما با موفقیت وارد سایت شدید'));
+            return done(null, user,  'شما با موفقیت وارد سایت شدید') ;
         }).catch(err => {
 
             console.log('Error in Finding User in login_strategy' + err);
-            return done(null, false, req.flash('message', "ایمیل یا پسورد اشتباه است"));
+            return done(null, false, "ایمیل یا پسورد اشتباه است");
 
         });
     }
