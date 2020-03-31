@@ -60,6 +60,7 @@ class courseController extends Controller {
             await deletedCourse.remove();
         
             return res.json({status: true })  ; 
+            
             // res.redirect(req.header('REFERER') || '/');
           } catch (error) {
             console.log(`Error in deleting course  ${error}`);

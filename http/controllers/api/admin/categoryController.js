@@ -1,31 +1,38 @@
-
-
-
 const Controller = require('../../controller');
-
 const Category = require('../../../../models/categories');
+const Course = require('../../../../models/course');
 
-const Course  = require('../../../../models/course') ; 
-class CateController extends Controller {
+class CategoryController extends Controller {
 
-
+     // geting all the categories 
      async getAllCats(req, res) {
           const categories = await Category.find({});
           res.json(categories);
      };
 
+     // added but does not tested Right now !! 
+     async updateCat(req, res) {
+          console.log(req.body, 'amir is here in server !!!!!');
+          const cat = await Category.findByIdAndUpdate(req.params.id, { ...req.body });
 
+          try {
+               await cat.save();
+               res.json({ status: true });
+          } catch (error) {
+               console.log('Error in Update the CateGory Save! ');
+               res.json({ status: false });
+          }
+     }
+
+     // make new category ! 
      async makeNewCat(req, res) {
-          console.log(req.body) ;
-
-          if (req.body.parent == 'none') req.body.parent = null  ; 
+          console.log(req.body);
+          if (req.body.parent == 'none') req.body.parent = null;
 
           try {
 
                const newCat = new Category({ ...req.body });
-
                await newCat.save();
-
                res.json({
 
                     status: true
@@ -40,8 +47,8 @@ class CateController extends Controller {
           }
      }
 
+     //delete category handler 
      async deleteCat(req, res) {
-          // console.log(req.params.id);
           try {
                const cat = await Category.findById(req.params.id)
                     .populate([{
@@ -58,7 +65,7 @@ class CateController extends Controller {
                await cat.remove();
                return res.json({ status: true });
           } catch (err) {
-               console.log(err) ;
+               console.log(err);
                return { status: false }
           }
      }
@@ -66,4 +73,4 @@ class CateController extends Controller {
 
 
 
-module.exports = new CateController();
+module.exports = new CategoryController();

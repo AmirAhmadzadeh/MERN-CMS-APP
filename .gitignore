@@ -1,3 +1,6 @@
 /node_modules
 .env
 p
+plugin.log
+
+package-lock.json

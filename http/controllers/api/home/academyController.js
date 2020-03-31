@@ -16,6 +16,7 @@ class AcademyController extends Controller {
         });
         return res.json({ courses: retCourses });
     }
+
     async getSingleCourse(req, res) {
         const course = await Course.findById(req.params.courseId)
             .populate([
@@ -62,11 +63,10 @@ class AcademyController extends Controller {
 
     async getCanUseForCourse(req, res) {
 
-
         const canUseCourse = req.user.checkLearningWithCourseId(req.body.courseId)
-
         res.json({ canUseCourse });
     }
+
     // byingCourse 
     async registerCourse(req, res) {
         // res.json('hello')
@@ -99,24 +99,17 @@ class AcademyController extends Controller {
             });
         }
 
-
         return res.json({
             status: true
         });
-
     }
 
-
-
     async comment(req,res) { 
-
-        console.log(`hello kcakm` , req.body ) ;   
 
          const cm = new Comment({...req.body  })
          await cm.save();
          if (!cm) return res.json({ status :false } );
-         return res.json({ status : true });
-            
+         return res.json({ status : true });        
     }
 
 }

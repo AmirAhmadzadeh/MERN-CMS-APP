@@ -10,15 +10,16 @@ const AcademyController = require('../../../http/controllers/api/home/academyCon
 
 
 
-//  check Token 
-
 
 // get user Info 
 router.get('/user' ,HomeController.getUserData) ; 
+
 // download Episode  
 
 // Register course 
 router.post('/registerCourse',AcademyController.registerCourse) ; 
+
+
 // get can Use permision for course
 router.post('/getCanUseCourseForUser' , AcademyController.getCanUseForCourse ) ; 
 
