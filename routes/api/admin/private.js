@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-
+// loading the controllers 
 const menuController = require('../../../http/controllers/api/admin/menuController');
 const commentsController = require('../../../http/controllers/api/admin/commentController');
 const CatController = require('../../../http/controllers/api/admin/categoryController');
 const CourseController = require('../../../http/controllers/api/admin/courseController');
 const EpsiodeController = require('../../../http/controllers/api/admin/episodeController');
+const postController = require('../../../http/controllers/api/admin/PostController');
+
 
 
 
@@ -35,7 +37,10 @@ router.get('/getCourses', CourseController.getCourses);
 router.post('/createCourse', CourseController.createCourse);
 router.delete('/deleteCourse/:id', CourseController.deleteCourse);
 
-
+// posts 
+router.get('/getPosts', postController.getAllposts);
+router.post('/createPost', postController.createPost);
+router.delete('/deletePost/:id', postController.deletePost)
 // episodes
 router.get('/getEpisodes', EpsiodeController.getEpisodes);
 

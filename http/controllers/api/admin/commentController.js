@@ -7,44 +7,36 @@ class CommentController extends Controller {
     async getApprovedComments(req, res) {
 
         const approvedComments = await Comment.find({ approved: true })
-
-        .populate(
-            [{
+            .populate(
+                [{
                     path: 'user ',
                     select: 'email'
                 },
                 {
                     path: 'course',
                     select: 'slug'
-
                 }
-            ]
-        );
-
+                ]
+            );
         return res.json(approvedComments);
-
     }
-
 
     async getDisApprovedcomments(req, res) {
         const disApprovedComments = await Comment.find({ approved: false })
             .populate(
                 [{
-                        path: 'user ',
-                        select: 'email'
-                    },
-                    {
-                        path: 'course',
-                        select: 'slug'
-
-                    }
+                    path: 'user ',
+                    select: 'email'
+                },
+                {
+                    path: 'course',
+                    select: 'slug'
+                }
                 ]
             );
 
         return res.json(disApprovedComments);
     }
-
-
 }
 
 
