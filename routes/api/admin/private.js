@@ -43,6 +43,7 @@ router.post('/createPost', postController.createPost);
 router.delete('/deletePost/:id', postController.deletePost)
 // episodes
 router.get('/getEpisodes', EpsiodeController.getEpisodes);
+router.post('/createEpisode', EpsiodeController.createNewEpisode);
 
 
 module.exports = router;
