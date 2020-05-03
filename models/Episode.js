@@ -8,7 +8,6 @@ const episodeSchema = new Schema({
 
     
     course:{ type : Schema.Types.ObjectId , ref : 'courses' , required:true  },
-    // episode:{ type : Schema.Types.ObjectId  , ref: 'episodes'  , default : null } ,
     videoUrl:{   type:String  , required : true } ,
     title:{  type : String ,  required:true  },
     body:{   type : String ,  required:true   },
